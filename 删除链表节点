@@ -3,7 +3,7 @@ struct ListNode{
      struct ListNode *next;
 }
 
-void deleteNode(struct ListNode* node){
-    node->val = node->next->val;
-    node->next = node->next->next;
+void deleteNode(struct ListNode* node){//通过赋值和修改地址来删除节点
+    node->val = node->next->val;//该删除节点的值改为下一个节点的值
+    node->next = node->next->next;//将当前节点指向地址改为下一个节点的指向地址
 }
