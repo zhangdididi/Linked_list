@@ -33,3 +33,21 @@ public class Solution {
 }
 
 
+public class Solution {
+    public ListNode FindKthToTail(ListNode head,int k) {
+        if (head == null) {
+            return head;
+        }
+        int len = 0;
+        for (ListNode cur = head; cur != null; cur = cur.next) {
+            len++;
+        }
+        if (k < 0 || k > len) {
+            return null;
+        }
+        for (int i = 0; i < len - k; i++) {
+            head = head.next;
+        }
+        return head;
+    }
+}
