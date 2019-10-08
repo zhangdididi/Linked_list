@@ -9,7 +9,9 @@
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode cur = head;
+        //当链表没有被遍历完时，进入循环
         while (cur != null && cur.next != null) {
+            //如果相等，则是重复元素，则直接让当前链表指向下下个结点
             if (cur.val == cur.next.val) {
                 cur.next = cur.next.next;
             } else {
