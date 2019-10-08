@@ -6,6 +6,7 @@ public class ListNode {
         this.val = val;
     }
 }*/
+//双指针法
 public class Solution {
     public ListNode FindKthToTail(ListNode head,int k) {
         if (head == null) {
@@ -32,7 +33,7 @@ public class Solution {
     }
 }
 
-
+//通过链表长度来求得倒数第k个结点
 public class Solution {
     public ListNode FindKthToTail(ListNode head,int k) {
         if (head == null) {
