@@ -8,6 +8,7 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        //创建新的傀儡节点接收两个链表的排序
         ListNode newHead = new ListNode(-1);
         ListNode newTail = newHead;
         while (l1 != null && l2 != null) {
@@ -28,6 +29,7 @@ class Solution {
         if (l2 == null) {
             newTail.next = l1;
         }
+        //傀儡节点是值为-1的头结点，我们将下一个节点当做头结点来返回
         return newHead.next;
     }
 }
