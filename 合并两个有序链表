@@ -20,9 +20,11 @@ class Solution {
             }
             newTail = newTail.next;
         }
+        //如果l1为空了，则直接将l2的剩余链表连接到新链表末尾上
         if (l1 == null) {
             newTail.next = l2;
         }       
+        //如果l2为空了，则直接将l1的剩余链表连接到新链表末尾
         if (l2 == null) {
             newTail.next = l1;
         }
