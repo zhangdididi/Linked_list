@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+//分隔链表
+    public ListNode partition(ListNode head, int x) {
+        //空链表或只有一个元素
+        if (head == null || head.next == null) {
+            return head;
+        }
+        //新建两个链表来接收原链表分隔开的两个部分
+        ListNode smallHead = new ListNode(0);
+        ListNode smallTail = smallHead;
+        ListNode bigHead = new ListNode(0);
+        ListNode bigTail = bigHead;
+        ListNode cur = head;
+        while (cur != null) {
+            if (cur.val < x) {
+                smallTail.next = cur;
+                cur = cur.next;
+                smallTail = smallTail.next;
+            } else {
+                bigTail.next = cur;
+                cur = cur.next;
+                bigTail = bigTail.next;
+            }
+        }
+        bigTail.next = null;//将链表末尾置为空引用
+        smallTail.next = bigHead.next;
+        return smallHead.next;
+    }
+}
