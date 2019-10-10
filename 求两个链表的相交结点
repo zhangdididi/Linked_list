@@ -1,0 +1,46 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //先求出两个单链表的长度
+        int lenA = size(headA);
+        int lenB = size(headB);
+        //较长的链表先走差值步
+        if (lenA - lenB > 0) {
+            for (int i = 0; i < lenA - lenB; i++) {
+                headA = headA.next;
+            }
+        } else {
+            for (int i = 0; i < lenB - lenA; i++) {
+                headB = headB.next;
+            }
+        }
+        //此时headA 和 headB的长度已经相等了
+        while (headA != null) {
+            if (headA != headB) {
+                headA = headA.next;
+                headB = headB.next;
+            } else {
+                return headA;
+            }
+        }
+        return null;
+    }
+
+    public static int size(ListNode head) {
+        int count = 0;
+        for (ListNode cur = head; cur != null; cur = cur.next) {
+            count++;
+        }
+        return count;
+    }
+}
