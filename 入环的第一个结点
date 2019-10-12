@@ -24,4 +24,4 @@ public ListNode detectCycle(ListNode head) {
             cur2 = cur2.next;
         }//循环结束，走到入口处
         return cur1;
-    }
+}
