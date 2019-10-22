@@ -12,11 +12,12 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode newHead = null;
+        ListNode newHead = null;//接收新的头结点
         ListNode prev = new ListNode(-1);
         ListNode cur = head;
         ListNode next = cur.next;
         prev.next = cur;
+        //next 以及 next 下一个结点不为空时，说明链表没有被遍历完，则进入循环
         while (next != null || next.next != null) {
             cur.next = next.next;
             next.next = cur;
