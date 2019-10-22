@@ -8,11 +8,11 @@
  */
 class Solution {
     public ListNode swapPairs(ListNode head) {
-    //空链表或者只有一个结点
+    //空链表或者只有一个结点，返回头结点
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode newHead = null;//接收新的头结点
+        ListNode newHead = null;//创建新的结点来接收新的头结点
         ListNode prev = new ListNode(-1);
         ListNode cur = head;
         ListNode next = cur.next;
