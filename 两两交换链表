@@ -26,6 +26,7 @@ class Solution {
             }
             prev = cur;
             cur = cur.next;
+            //遍历完链表后，直接跳出循环
             if (cur == null || cur.next == null) {
                 break;
             }
