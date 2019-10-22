@@ -21,7 +21,6 @@ class Solution {
         while (next != null || next.next != null) {
             cur.next = next.next;
             next.next = cur;
-            //如果next 的下一个结点为null，则让新头结点指向原链表最后位置，也就是逆置之后的头结点
             if (next.next == head) {
                 newHead = next;
             }
