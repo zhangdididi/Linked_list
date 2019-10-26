@@ -29,6 +29,7 @@ class Solution {
         }
         ListNode fast = head;
         ListNode slow = head;
+        //慢指针每走一步，快指针就走两步
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
