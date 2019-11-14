@@ -8,23 +8,20 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-     
         //一般情况，循环跳过重复的元素
         ListNode newHead = new ListNode(0);//傀儡节点
-        newHead.next = head;
         ListNode prev = newHead;
-        ListNode cur = prev.next;
+        ListNode cur = head;
         while (cur != null) {
             //如果两个引用的元素相等，则让cur继续向后走，判断与后面元素是否相等
             //如果相等，cur继续向后走
             if (cur.next != null && cur.val == cur.next.val) {
-                while (cur.next != null && cur.val == cur.next.val) {
-                    
+                while (cur.next != null && cur.val == cur.next.val) { 
                     cur = cur.next;
                 }
                 //循环结束，cur指向重复元素的最后一个
-                prev.next = cur.next;
                 cur = cur.next;
+                prev.next = cur;
             } else {
                 //如果不相等，把这个节点插入到新链表上
                 prev.next = cur;
