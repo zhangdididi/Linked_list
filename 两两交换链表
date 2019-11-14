@@ -6,6 +6,7 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ //递归方法
 class Solution {
     public ListNode swapPairs(ListNode head) {
     //空链表或者只有一个结点，返回头结点
@@ -34,5 +35,16 @@ class Solution {
             prev.next = next;
         }
         return newHead;
+    }
+}
+
+//递归方法
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode next = head.next;
+        head.next = swapPairs(next.next);
+        next.next = head;
+        return next;
     }
 }
