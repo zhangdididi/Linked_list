@@ -9,6 +9,24 @@
  *     }
  * }
  */
+ 
+ //哈希表法
+ public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> set = new HashSet<>();
+        for (ListNode cur1 = headA; cur1 != null; cur1 = cur1.next) {
+            set.add(cur1);
+        }
+        for (ListNode cur2 = headB; cur2 != null; cur2 = cur2.next) {
+            if (set.contains(cur2)) {
+                return cur2;
+            }
+        }
+        return null;
+    }
+}
+ 
+ //计数法
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         //先求出两个单链表的长度
