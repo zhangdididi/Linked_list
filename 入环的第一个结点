@@ -12,16 +12,17 @@ public ListNode detectCycle(ListNode head) {
             if (fast == slow) {
                 break;
             }
-            
-        }//循环结束，fast和slow重合
+        }
+        //循环结束，fast和slow重合
         if (fast == null || fast.next == null) {
                 return null;//不带环
-            }
+        }
         ListNode cur1 = head;
         ListNode cur2 = fast;
         while (cur1 != cur2) {
             cur1 = cur1.next;
             cur2 = cur2.next;
-        }//循环结束，走到入口处
+        }
+        //循环结束，走到入口处
         return cur1;
 }
