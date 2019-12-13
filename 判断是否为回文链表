@@ -16,11 +16,11 @@ class Solution {
         ListNode fast = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
-            ListNode back = curr.next;
+            ListNode following = curr.next;
             curr.next = prev;
             
             prev = curr;
-            curr = back;
+            curr = following;
         }
         if (fast != null) {
             curr = curr.next;
