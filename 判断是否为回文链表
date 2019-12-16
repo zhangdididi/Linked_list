@@ -17,8 +17,7 @@ class Solution {
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             ListNode following = curr.next;
-            curr.next = prev;
-            
+            curr.next = prev;  
             prev = curr;
             curr = following;
         }
