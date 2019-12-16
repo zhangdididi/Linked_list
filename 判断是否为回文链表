@@ -21,6 +21,7 @@ class Solution {
             prev = curr;
             curr = following;
         }
+        //fast为null,说明链表个数为偶数个,不为null说明链表个数为奇数个
         if (fast != null) {
             curr = curr.next;
         }
