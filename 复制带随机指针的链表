@@ -5,12 +5,12 @@
 */
 
 class Solution {
-    public Node copyRandomList(Node head) {
-        HashMap<Node, Node> hash = new HashMap<>();
-        for (Node cur = head; cur != null; cur = cur.next) {
-            hash.put(cur, new Node(cur.val, null, null));
+    public ListNode copyRandomList(ListNode head) {
+        HashMap<ListNode, ListNode> hash = new HashMap<>();
+        for (ListNode cur = head; cur != null; cur = cur.next) {
+            hash.put(cur, new ListNode(cur.val, null, null));
         }
-        for (Node cur = head; cur != null; cur = cur.next) {
+        for (ListNode cur = head; cur != null; cur = cur.next) {
             hash.get(cur).next = hash.get(cur.next);
             hash.get(cur).random = hash.get(cur.random);
         }
