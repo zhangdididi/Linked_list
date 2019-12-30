@@ -1,0 +1,28 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        //加前一个结点，如果当前两个节点和大于10， 就让prev+1
+        ListNode newHead = new ListNode(-1);
+        ListNode newTail = newHead;
+        int carry = 0;
+        while (l1 != null || l2 != null) {
+            int l1_val = l1 != null ? l1.val : 0;
+            int l2_val = l2 != null ? l2.val : 0;
+            int sum = l1_val + l2_val + carry;
+            carry = sum / 10;
+            newTail.next = new ListNode(sum % 10);
+            newTail = newTail.next;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+        if (carry > 0) newTail.next = new ListNode(carry);
+        return newHead.next;
+    }
+}
