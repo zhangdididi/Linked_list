@@ -40,3 +40,24 @@ public class Solution {
         return newHead.next;
     }
 }
+
+
+//递归完成
+
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        //先判断递归终止条件，其中一个链表为空就直接返回另一个链表
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+        //创建一个用来作为返回的头结点
+        ListNode newHead = null;
+        //先判断当前两个节点的大小，将小的插入到新结点链表
+        //再递归传入这个较小节点的下一个节点，也就是递归去处理没有被比较过的链表
+        if (list1.val <= list2.val) {
+            newHead = list1;
+            newHead.next = Merge(list1.next, list2);
+        } else {
+            newHead = list2;
+            newHead.next = Merge(list1, list2.next);
+        }
+        return newHead;
+    }
