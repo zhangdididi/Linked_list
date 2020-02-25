@@ -1,36 +1,42 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        //创建新的傀儡节点接收两个链表的排序
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Solution {
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        //首先创建一个新的头结点和尾结点来尾插比较后的结点
         ListNode newHead = new ListNode(-1);
         ListNode newTail = newHead;
-        while (l1 != null && l2 != null) {
-            if (l1.val <= l2.val) {
-                newTail.next = l1;
-                l1 = l1.next;
+        //两个链表都不为空时，就进行两两结点比较，插入较小的结点
+        //创建两个临时节点来遍历两个链表
+        ListNode nodeOfList1 = list1;
+        ListNode nodeOfList2 = list2;
+        while (nodeOfList1 != null && nodeOfList2 != null) {
+            //对两个链表的结点进行比较
+            if (nodeOfList1.val <= nodeOfList2.val) {
+                newTail.next = nodeOfList1;
+                nodeOfList1 = nodeOfList1.next;
+                newTail = newTail.next;
             } else {
-                newTail.next = l2;
-                l2 = l2.next;
+                newTail.next = nodeOfList2;
+                nodeOfList2 = nodeOfList2.next;
+                newTail = newTail.next;
             }
-            newTail = newTail.next;
         }
-        //如果l1为空了，则直接将l2的剩余链表连接到新链表末尾上
-        if (l1 == null) {
-            newTail.next = l2;
-        }       
-        //如果l2为空了，则直接将l1的剩余链表连接到新链表末尾
-        if (l2 == null) {
-            newTail.next = l1;
+        //循环结束但是肯定还有一个链表没有被遍历完，同时也可以处理如果有链表为空的情况
+        if (nodeOfList2 == null) {
+            //如果第二个链表为空，则说明第一个链表有剩余结点，将他直接插入到新链表后面
+            newTail.next = nodeOfList1;
         }
-        //傀儡节点是值为-1的头结点，我们将下一个节点当做头结点来返回
+        if (nodeOfList1 == null) {
+            //如果第一个链表为空，则说明第二个链表有剩余结点，将他直接插入到新链表后面
+            newTail.next = nodeOfList2;
+        }
         return newHead.next;
     }
 }
-
