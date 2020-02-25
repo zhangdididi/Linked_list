@@ -1,0 +1,39 @@
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Solution {
+    public ListNode ReverseList(ListNode head) {
+        //如果链表为空，也就是头结点为空，或者链表只有一个节点
+        //就直接返回头结点
+        if (head == null || head.next == null) return head;
+        //如果链表有多个节点
+        //创建新的头结点
+        ListNode newHead = new ListNode(-1);
+        //创建临时节点用来保存当前反转节点的前一个结点和后一个节点
+        ListNode prev = null;
+        ListNode next = null;
+        //创建curr结点用来遍历链表
+        ListNode curr = head;
+        //当当前节点的下一个节点不为空时，就进入循环进行反转操作
+        while (curr != null) {
+            //反转前先保存下一个节点
+            next = curr.next;
+            //如果next节点为空，说明curr走到了链表的末尾，设置新的头结点
+            if (next == null) {
+                newHead = curr;
+            }
+            //此时将当前链表进行反转，让当前节点指向前一个结点
+            curr.next = prev;
+            //在分别先更新前一个结点，再更新后一个节点
+            prev = curr;
+            curr = next;
+        }
+        return newHead;
+    }
+}
