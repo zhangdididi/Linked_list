@@ -6,32 +6,33 @@ public class ListNode {
         this.val = val;
     }
 }*/
-//双指针法
+//双指针法，只遍历一次
 public class Solution {
     public ListNode FindKthToTail(ListNode head,int k) {
-        if (head == null) {
-            return head;
-        }
-        int len = 0;
-        for (ListNode cur = head; cur != null; cur = cur.next) {
-            len++;
-        }
-        if (k < 0 || k > len) {
+        //如果链表为空链表，也就是头结点为空
+        //或者k小于等于0无意义，返回空
+        if (head == null || k <= 0) {
             return null;
         }
-        //创建两个引用，一个先走k步，两个再一起走，直到快的引用先指向null
-        ListNode fastNode = head;
-        ListNode slowNode = head;
-        for (int i = 0; i <k; i++) {
-            fastNode = fastNode.next;
+        //创建快指针和慢指针，让快指针先走k步
+        ListNode slow = head;
+        ListNode fast = head;
+        for (int i = 0; i < k; i++) {
+            if (fast.next != null) {
+                fast = fast.next;
+            } else {
+                //如果遇到空，说明k大于数组长度，直接返回空
+                return null;
+            }
         }
-        while (fastNode != null) {
-            fastNode = fastNode.next;
-            slowNode = slowNode.next;
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
         }
-        return slowNode;
+        return slow;
     }
 }
+
 
 //通过链表长度来求得倒数第k个结点
 public class Solution {
