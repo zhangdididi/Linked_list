@@ -6,7 +6,8 @@
  *     ListNode(int x) { val = x; }
  * }
  */
- //递归方法
+
+//非递归
 class Solution {
     public ListNode swapPairs(ListNode head) {
     //空链表或者只有一个结点，返回头结点
