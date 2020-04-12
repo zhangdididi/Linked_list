@@ -6,6 +6,26 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ 
+ class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode newHead = new ListNode(-1);
+        ListNode prev = newHead;
+        ListNode first = head;
+        while (first != null && first.next != null) {
+            ListNode second = first.next;
+            //交换两节点位置
+            prev.next = second;
+            first.next = second.next;
+            second.next = first;
+            //记录prev和first
+            prev = first;
+            first = first.next;
+        }
+        return newHead.next;
+    }
+}
 
 //非递归
 class Solution {
